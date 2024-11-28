@@ -10,6 +10,8 @@ if (session_status() === PHP_SESSION_NONE) {
 use App\Router;
 use App\Container;
 
+define('BASE_URL', '/cinetech-mvc/');
+
 $container = new Container();
 
 // Register your services in the container

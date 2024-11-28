@@ -22,6 +22,11 @@ class Router {
     }
 
     public function dispatch($url) {
+
+        $url = preg_replace('/^\/cinetech-mvc/', '', $url);
+        if ($url === '') {
+            $url = '/';
+        }
         foreach ($this->routes as $pattern => $route) {
             if (preg_match($pattern, $url, $matches)) {
                 $controllerClass = $route['controller'];
@@ -30,6 +35,10 @@ class Router {
                 array_shift($matches);
                 
                 $controller = $this->container->get($controllerClass);
+                
+                if (!method_exists($controller, $action)) {
+                    throw new \Exception("Action '$action' not found in controller '$controllerClass'");
+                }
                 
                 if (!empty($matches)) {
                     call_user_func_array([$controller, $action], $matches);

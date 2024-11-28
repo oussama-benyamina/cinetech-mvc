@@ -12,6 +12,6 @@
     <!-- Swiper JS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="/public/style.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>public/style.css">
 </head>
 <body>
